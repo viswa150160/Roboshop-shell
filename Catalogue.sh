@@ -55,7 +55,7 @@ npm install &>>$LOGFILE
 
 VALIDATE $? "install npm"
 
-cp /home/centos/Roboshop-shell/Catalogue.Service /etc/systemd/system/catalogue.service &>>$LOGFILE
+cp /home/centos/Roboshop-shell/catalogue.service /etc/systemd/system/catalogue.service &>>$LOGFILE
 
 VALIDATE $? "copy catalogue.service file"
 
