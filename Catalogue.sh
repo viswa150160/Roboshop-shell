@@ -42,6 +42,8 @@ useradd roboshop &>>$LOGFILE
 # write a condtion direxist or not
 mkdir /app &>>$LOGFILE
 
+rm -rf /tmp/*
+
 curl -o /tmp/catalogue.zip https://roboshop-builds.s3.amazonaws.com/catalogue.zip
 
 cd /app &>>$LOGFILE
