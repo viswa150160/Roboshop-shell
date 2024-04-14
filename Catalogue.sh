@@ -42,25 +42,45 @@ useradd roboshop &>>$LOGFILE
 # write a condtion direxist or not
 mkdir /app &>>$LOGFILE
 
+curl -o /tmp/catalogue.zip https://roboshop-builds.s3.amazonaws.com/catalogue.zip
+
 cd /app &>>$LOGFILE
 VALIDATE $? " move to app folder "
+
 unzip /tmp/catalogue.zip &>>$LOGFILE
+
 VALIDATE $? "unzip the catalog"
+
 npm install &>>$LOGFILE
+
 VALIDATE $? "install npm"
+
 cp /home/centos/Roboshop-shell/Catalogue.Service /etc/systemd/system/catalogue.service &>>$LOGFILE
+
 VALIDATE $? "copy catalogue.service file"
+
 systemctl daemon-reload &>>$LOGFILE
+
 VALIDATE $? "daemon-reload"
+
 systemctl enable catalogue &>>$LOGFILE
+
 VALIDATE $? "enable catalogue"
+
 systemctl start catalogue &>>$LOGFILE
+
 VALIDATE $? "start catalogue"
+
 cp /home/centos/Roboshop-shell/mongo.repo /etc/yum.repos.d/mongo.repo &>>$LOGFILE
+
 VALIDATE $? "copy mongo.repo file"
+
 yum install mongodb-org-shell -y  &>>$LOGFILE
+
 VALIDATE $? "install mongo client"
+
 mongo --host mongodb.devops2024.cloud </app/schema/catalogue.js &>>$LOGFILE
+
 VALIDATE $? "loading catalog data into mongodb"
 
 
