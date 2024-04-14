@@ -1,10 +1,10 @@
 #!/bin/bash
 
-DATE=$(Date +%F)
+DATE=$(date +%F)
 LOGDIR=/tmp
 SCRIPT_NAME=$0
 LOGFILE=$LOGDIR/$0_$DATE.Log
-USERID=$(id -u)
+USERID=$( id -u )
 
 R="\e[31m"
 G="\e[32m"
@@ -13,14 +13,14 @@ Y="\e[33m"
 
 # Checking here whether user has ROOT access or NOT
 
-if [$USERID -ne 0];
+if [ $USERID -ne 0 ];
     then 
         echo -e "$R ERROR:: please run the script with root access $N"
         exist 1
 fi
 
 VALIDATE() {
-   if [$1 -ne 0];
+   if [ $1 -ne 0 ];
       then 
          echo -e "$2...$R FAILURE $N"
          exit 1
